@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout — SO.KI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+  <style>
+    .checkout { display: grid; grid-template-columns: 1.2fr 1fr; gap: clamp(24px, 5vw, 80px); padding: 48px var(--gutter) 100px; max-width: 1240px; margin: 0 auto; }
+    .checkout h1 { margin: 0 0 8px; font-size: clamp(36px, 4vw, 56px); font-weight: 600; text-transform: uppercase; line-height: 1; }
+    .checkout h1 .serif { text-transform: none; }
+    .notice { background: var(--paper-warm); border-radius: var(--radius); padding: 20px 22px; margin: 26px 0; font-size: 13px; }
+    .notice strong { display: block; font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 22px; margin-bottom: 4px; }
+    .summary { background: var(--paper-warm); border-radius: 22px; padding: 26px; align-self: start; position: sticky; top: 90px; }
+    .summary h3 { margin: 0 0 6px; font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 28px; }
+    .summary .line { grid-template-columns: 60px 1fr auto; }
+    .summary .sum { display: flex; justify-content: space-between; padding: 8px 0; font-size: 13px; }
+    .summary .sum.total { border-top: 1px solid var(--line); margin-top: 8px; padding-top: 16px; font-size: 16px; font-weight: 600; }
+    .pill-btn[disabled] { opacity: .45; cursor: not-allowed; transform: none; }
+    @media (max-width: 960px) { .checkout { grid-template-columns: 1fr; } .summary { position: static; } }
+  </style>
+</head>
+<body>
+  <main class="checkout">
+    <div>
+      <span class="eyebrow">Step 1 of 2</span>
+      <h1>Secure <span class="serif">checkout</span></h1>
+      <div class="notice">
+        <strong>Payments open soon</strong>
+        We’re putting the final touches on our secure payment page. Your bag is saved on this device — come back shortly to complete your order.
+      </div>
+      <button class="pill-btn" disabled style="max-width:420px">Continue to payment</button>
+      <p style="margin-top:18px"><a href="index.html#shop" class="eyebrow" style="text-decoration:underline;text-underline-offset:3px">← Continue shopping</a></p>
+    </div>
+    <aside class="summary" data-summary></aside>
+  </main>
+  <script type="module">
+    import { collectionOf, money } from './assets/products.js';
+    import { packshot } from './assets/art.js';
+    import { mountShell, cartLines, cartTotal, FREE_SHIPPING } from './assets/app.js';
+
+    mountShell();
+    const box = document.querySelector('[data-summary]');
+    function render() {
+      const lines = cartLines();
+      const sub = cartTotal();
+      const ship = sub === 0 || sub >= FREE_SHIPPING ? 0 : 5.95;
+      box.innerHTML = `<h3>Order summary</h3>` + (lines.length
+        ? lines.map(({ qty, product: p }) => `<div class="line" style="--tint:${collectionOf(p).tint}">
+            <div class="thumb">${packshot(p)}</div><div class="t">${p.name}<small>${p.size} · Qty ${qty}</small></div>
+            <div class="r">${money(qty * p.price)}</div></div>`).join('')
+          + `<div class="sum" style="margin-top:12px"><span>Subtotal</span><span>${money(sub)}</span></div>
+             <div class="sum"><span>Shipping</span><span>${ship ? money(ship) : 'Free'}</span></div>
+             <div class="sum total"><span>Total</span><span>${money(sub + ship)}</span></div>`
+        : `<p style="color:var(--ink-soft)">Your bag is empty.</p>`);
+    }
+    document.addEventListener('cart:change', render);
+    render();
+  </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+node_modules
+src/web/node_modules
+dist
+src/web/dist
+.env
+.env.*
+!.env.example
+.claude
+assets
+*.log
+*.tsbuildinfo

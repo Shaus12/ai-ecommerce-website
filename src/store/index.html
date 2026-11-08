@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shop — SO.KI Korean Skincare</title>
+  <meta name="description" content="SO.KI — soft, Korean, kind skincare. Shop glass-skin toners, serums, creams and sun care made in Korea.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%233b3b3b'/><text x='16' y='22' text-anchor='middle' font-family='Georgia' font-style='italic' font-size='18' fill='%23fff'>s</text></svg>">
+  <style>
+    .rituals { padding: 40px var(--gutter) 110px; }
+    .rituals-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; margin-bottom: 36px; }
+    .rituals-head h2 { margin: 0; font-size: clamp(36px, 5vw, 72px); line-height: .95; font-weight: 600; text-transform: uppercase; }
+    .rituals-head h2 .serif { text-transform: none; }
+    .rituals-head p { max-width: 380px; margin: 0; color: var(--ink-soft); }
+    .steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; counter-reset: step; }
+    .step { background: var(--paper-warm); border-radius: var(--radius); padding: 22px 20px 26px; min-height: 210px; display: flex; flex-direction: column; justify-content: space-between; transition: background .35s; }
+    .step:hover { background: var(--tint); }
+    .step b { font-family: var(--serif); font-style: italic; font-weight: 400; font-size: 46px; line-height: 1; }
+    .step h4 { margin: 0 0 6px; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; }
+    .step p { margin: 0 0 12px; font-size: 12px; color: var(--ink-soft); }
+    .step a { font-size: 10px; letter-spacing: .14em; text-transform: uppercase; text-decoration: underline; text-underline-offset: 3px; }
+    .story { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 6vw, 100px); padding: 110px var(--gutter); align-items: center; }
+    .story h2 { margin: 0; font-size: clamp(40px, 5.6vw, 84px); line-height: .92; font-weight: 600; text-transform: uppercase; }
+    .story h2 .serif { text-transform: none; display: block; }
+    .story p { color: var(--ink-soft); max-width: 460px; margin: 0 0 16px; font-size: 15px; }
+    @media (max-width: 960px) { .steps { grid-template-columns: 1fr 1fr; } .story { grid-template-columns: 1fr; } }
+    @media (max-width: 600px) { .steps { grid-template-columns: 1fr; } .step { min-height: 0; gap: 18px; } }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero" aria-label="Meet our complete lineup">
+      <img class="hero-img" src="assets/hero.webp" width="1672" height="941" fetchpriority="high"
+        alt="Smiling woman with dewy skin holding a lilac jar of hydration cream among cherry blossoms">
+      <div class="hero-copy">
+        <span class="eyebrow">Korean skincare, chosen with care</span>
+        <h1>Meet our <span class="serif">complete lineup</span></h1>
+        <p>Glass-skin toners, calming cica, ginseng serums and daily SPF — the five-step Korean ritual, made simple.</p>
+        <div class="hero-actions">
+          <a class="pill-btn" href="#shop">Shop the lineup</a>
+          <a class="pill-btn ghost" href="#rituals">Understand your ritual</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="shop" id="shop">
+      <aside class="filters" aria-label="Filters">
+        <span class="eyebrow">Filters</span>
+        <details class="filter-group" open><summary>Range</summary><ul data-filter="range"></ul></details>
+        <details class="filter-group"><summary>Type</summary><ul data-filter="type"></ul></details>
+        <details class="filter-group"><summary>Ingredients</summary><ul data-filter="ingredient"></ul></details>
+        <button class="clear-filters" data-clear>Clear filters</button>
+      </aside>
+      <div data-rows></div>
+    </section>
+
+    <section class="rituals" id="rituals">
+      <div class="rituals-head reveal">
+        <h2>The SO.KI<br><span class="serif">ritual</span></h2>
+        <p>Five simple steps, borrowed from Seoul. Thin layers, gentle actives and daily sun care — the habits behind famously healthy Korean skin.</p>
+      </div>
+      <div class="steps" data-steps></div>
+    </section>
+
+    <div class="values reveal" id="values">
+      <div><strong>Made in Korea</strong><span>Sourced from Korean labs and brands we trust.</span></div>
+      <div><strong>Skin-first</strong><span>Gentle, low-pH formulas for every skin type.</span></div>
+      <div><strong>Cruelty free</strong><span>Never tested on animals.</span></div>
+      <div><strong>Free shipping</strong><span>On US orders over $50.</span></div>
+    </div>
+
+    <section class="story" id="story">
+      <h2 class="reveal">Soft.<br>Korean.<span class="serif">Kind.</span></h2>
+      <div class="reveal">
+        <p>SO.KI brings the quiet discipline of Korean skincare to your shelf: fewer harsh actives, more layers of moisture, and ingredients with centuries of use behind them — rice, ginseng, centella and green tea.</p>
+        <p>Every product in our lineup is chosen for one thing: that it works, gently, every day.</p>
+        <a class="pill-btn ghost" href="#shop" style="width:auto">Shop the lineup</a>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="assets/shop.js"></script>
+</body>
+</html>

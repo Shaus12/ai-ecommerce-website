@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SO.KI Korean Skincare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+  <style>
+    .pdp { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(24px, 5vw, 80px); padding: 28px var(--gutter) 90px; }
+    .crumbs { grid-column: 1 / -1; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-soft); }
+    .crumbs a:hover { color: var(--ink); }
+    .gallery { position: sticky; top: 90px; align-self: start; background: var(--tint); border-radius: 22px; aspect-ratio: 4 / 5; display: grid; place-items: center; padding: 8% 22%; overflow: hidden; }
+    .gallery svg { width: 100%; animation: rise 1s var(--ease) both; }
+    .gallery .tag { position: absolute; top: 20px; left: 20px; background: #fff; border-radius: 999px; padding: 7px 14px; font-size: 9px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; }
+    .info { padding-top: 10px; }
+    .info h1 { margin: 10px 0 6px; font-size: clamp(32px, 3.6vw, 52px); line-height: 1; font-weight: 600; }
+    .info .tagline { font-family: var(--serif); font-style: italic; font-size: 26px; color: var(--ink-soft); margin: 0 0 22px; }
+    .price-row { display: flex; align-items: baseline; gap: 14px; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
+    .price-row strong { font-size: 22px; font-weight: 600; }
+    .price-row span { font-size: 12px; color: var(--ink-soft); }
+    .info .about { font-size: 15px; margin: 22px 0; max-width: 520px; }
+    .buy { display: flex; gap: 12px; align-items: stretch; margin: 26px 0 12px; max-width: 520px; }
+    .buy .qty { margin: 0; }
+    .buy .qty button { width: 40px; height: 100%; }
+    .buy .pill-btn { flex: 1; padding: 16px 22px; }
+    .perks { font-size: 11px; color: var(--ink-soft); margin: 0 0 30px; }
+    .acc { border-top: 1px solid var(--line); max-width: 520px; }
+    .acc:last-of-type { border-bottom: 1px solid var(--line); }
+    .acc summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; padding: 16px 0; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; font-weight: 600; }
+    .acc summary::-webkit-details-marker { display: none; }
+    .acc summary::after { content: '+'; font-weight: 400; font-size: 16px; line-height: 1; }
+    .acc[open] summary::after { content: '−'; }
+    .acc div { padding: 0 0 18px; font-size: 13.5px; color: #555; }
+    .acc ul { margin: 0; padding-left: 18px; }
+    .acc dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 18px; }
+    .acc dt { font-weight: 600; color: var(--ink); }
+    .acc dd { margin: 0; }
+    .related { padding: 0 var(--gutter) 60px; }
+    .related .track { grid-auto-columns: calc((100% - 3 * 16px) / 4); }
+    .missing { padding: 120px var(--gutter); text-align: center; }
+    @media (max-width: 960px) { .pdp { grid-template-columns: 1fr; } .gallery { position: relative; top: 0; } .related .track { grid-auto-columns: calc((100% - 16px) / 2); } }
+    @media (max-width: 600px) { .related .track { grid-auto-columns: 78%; } .gallery { padding: 8% 26%; } }
+  </style>
+</head>
+<body>
+  <main data-pdp></main>
+  <script type="module" src="assets/product.js"></script>
+</body>
+</html>

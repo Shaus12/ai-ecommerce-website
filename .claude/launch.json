@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "control-room",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "port": 8080
+    },
+    {
+      "name": "soki-store",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["scripts/serve-store.mjs", "4321"],
+      "port": 4321
+    }
+  ]
+}
